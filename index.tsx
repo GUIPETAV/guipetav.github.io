@@ -3,7 +3,9 @@ import { Menu, X, Github, Linkedin, Mail, ExternalLink, ChevronRight } from 'luc
 
 const Portfolio = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
+<h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl md:text-6xl">
+  Desenvolvedor e Professor
+</h1>
   const projects = [
     {
       title: "Project 1",
