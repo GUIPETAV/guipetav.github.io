@@ -27,4 +27,92 @@ nav {
     align-items: center;
 }
 
-/* Additional styles here */
+.nav-links a {
+    margin-left: 1rem;
+    color: #4b5563;
+    text-decoration: none;
+}
+
+.mobile-menu-btn {
+    display: none;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+
+    .mobile-menu-btn {
+        display: block;
+    }
+}
+
+.mobile-menu {
+    display: none;
+    padding: 1rem;
+    background: white;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-menu a {
+    display: block;
+    padding: 0.5rem;
+    color: #4b5563;
+    text-decoration: none;
+}
+
+@media (min-width: 1024px) {
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Hero Section */
+.hero {
+    text-align: center;
+    padding: 4rem 1rem;
+}
+
+.hero h1 {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #111827;
+    margin-bottom: 1rem;
+}
+
+.hero p {
+    color: #6b7280;
+    max-width: 48rem;
+    margin: 0 auto;
+    font-size: 1.125rem;
+}
+
+.social-links {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.social-links i {
+    color: #6b7280;
+    cursor: pointer;
+}
+
+.social-links i:hover {
+    color: #111827;
+}
+
+/* About Section */
+.about {
+    padding: 4rem 1rem;
+    background: #f9fafb;
+}
+
+.section-container {
+    max-width: 1280px;
+    margin: 0 auto;
+}
