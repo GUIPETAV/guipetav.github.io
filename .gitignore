@@ -1,0 +1,19 @@
+# Ignore Mac system files
+.DS_Store
+
+# Ignore Node.js dependencies
+node_modules/
+
+# Ignore build output
+dist/
+build/
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+
+# Ignore by Visual Studio Code
+.vscode/
+
+project-links.html
+project-links2
