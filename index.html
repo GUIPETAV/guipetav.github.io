@@ -5,11 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guilherme Peterlini - Portfolio</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
 </head>
 <body>
     <!-- Header -->
-    <header>
+    <header class="animate__animated animate__fadeInDown">
         <nav>
             <div class="nav-container">
                 <span class="nav-logo">Guilherme Peterlini</span>
@@ -31,11 +32,11 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="hero">
+    <section class="hero animate__animated animate__fadeIn">
         <div class="hero-content">
-            <h1>Guilherme Peterlini</h1>
-            <p>Desenvolvedor e Educador apaixonado por tecnologia.</p>
-            <div class="social-links">
+            <h1 class="animate__animated animate__fadeInUp">Guilherme Peterlini</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">Desenvolvedor e Educador apaixonado por tecnologia.</p>
+            <div class="social-links animate__animated animate__fadeInUp animate__delay-2s">
                 <a href="#"><i data-feather="github"></i></a>
                 <a href="#"><i data-feather="linkedin"></i></a>
                 <a href="#"><i data-feather="twitter"></i></a>
@@ -46,7 +47,7 @@
     <!-- Main Content -->
     <main>
         <!-- About Section -->
-        <section id="about" class="about">
+        <section id="about" class="about animate__animated animate__fadeInUp">
             <div class="section-container">
                 <h2 class="section-title">Sobre Mim</h2>
                 <p>
@@ -57,11 +58,11 @@
         </section>
 
         <!-- Projects Section -->
-        <section id="projects" class="projects">
+        <section id="projects" class="projects animate__animated animate__fadeInUp">
             <div class="section-container">
                 <h2 class="section-title">Projetos</h2>
                 <div class="projects-grid">
-                    <div class="project-card">
+                    <div class="project-card animate__animated animate__zoomIn">
                         <h3 class="project-title">Salas de aula do github</h3>
                         <p>Descrição de uma sala de aula no GitHub Classroom, mostrando habilidades técnicas e impacto.</p>
                         <a href="project-links.html" title="Salas de aula do github">
@@ -71,7 +72,7 @@
                             <span class="tag">Github</span>
                         </div>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card animate__animated animate__zoomIn animate__delay-1s">
                         <h3 class="project-title">Project 2</h3>
                         <p>Description of project 2 demonstrating problem-solving abilities.</p>
                         <div class="project-tags">
@@ -80,7 +81,7 @@
                             <span class="tag">PostgreSQL</span>
                         </div>
                     </div>
-                    <div class="project-card">
+                    <div class="project-card animate__animated animate__zoomIn animate__delay-2s">
                         <h3 class="project-title">Project 3</h3>
                         <p>Description of project 3 highlighting creative solutions.</p>
                         <div class="project-tags">
@@ -94,7 +95,7 @@
         </section>
 
         <!-- Contact Section -->
-        <section id="contact" class="contact">
+        <section id="contact" class="contact animate__animated animate__fadeInUp">
             <div class="section-container">
                 <h2 class="section-title">Contato</h2>
                 <p>
@@ -106,7 +107,7 @@
     </main>
 
     <!-- Footer -->
-    <footer>
+    <footer class="animate__animated animate__fadeInUp">
         <div class="section-container">
             <div class="footer-social">
                 <a href="#"><i data-feather="github"></i></a>
@@ -121,4 +122,15 @@
         feather.replace();
     </script>
 </body>
-</html>
+```
+
+### Explicação das Animações
+
+- **Header**: Adiciona uma animação de fade-in-down ao carregar a página.
+- **Hero Section**: Adiciona animações de fade-in e fade-in-up com delays para os elementos dentro da seção.
+- **About Section**: Adiciona uma animação de fade-in-up.
+- **Projects Section**: Adiciona animações de zoom-in com delays para cada card de projeto.
+- **Contact Section**: Adiciona uma animação de fade-in-up.
+- **Footer**: Adiciona uma animação de fade-in-up.
+
+Essas animações tornam o site mais dinâmico e atraente. Você pode ajustar as animações e os delays conforme necessário para obter o efeito desejado.
