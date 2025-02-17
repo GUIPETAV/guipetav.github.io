@@ -86,7 +86,7 @@ h1 {
 header {
     background: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    background-color: rgba(76, 175, 80, 0.8); /* Verde com 80% de opacidade */
+    background-color: transparent; /* Fundo transparente */
     color: white;
 }
 
@@ -458,6 +458,6 @@ footer {
 }
 
 button {
-    background-color: rgba(76, 175, 80, 0.8); /* Verde com 80% de opacidade */
+    background-color: transparent; /* Fundo transparente */
     color: white;
 }
