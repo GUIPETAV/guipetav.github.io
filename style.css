@@ -237,6 +237,14 @@ social-links i:hover {
     font-size: 0.8rem;
 }
 
+.project-image {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
 /* Contact Section */
 .contact {
     padding: 4rem 1rem;
