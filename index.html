@@ -4,10 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Guilherme Peterlini - Portfolio</title>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
     <link rel="stylesheet" href="style.css">
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
 </head>
 <body>
+    <!-- Header -->
     <header>
         <nav>
             <div class="nav-container">
@@ -27,12 +28,22 @@
                 <a href="#contact">Contato</a>
             </div>
         </nav>
-
-        <section class="hero">
-        </section>
     </header>
 
-    <!-- Main: Conteúdo principal do site -->
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Guilherme Peterlini</h1>
+            <p>Desenvolvedor e Educador apaixonado por tecnologia.</p>
+            <div class="social-links">
+                <a href="#"><i data-feather="github"></i></a>
+                <a href="#"><i data-feather="linkedin"></i></a>
+                <a href="#"><i data-feather="twitter"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
     <main>
         <!-- About Section -->
         <section id="about" class="about">
@@ -94,11 +105,20 @@
         </section>
     </main>
 
-    <!-- Footer (opcional) -->
+    <!-- Footer -->
     <footer>
         <div class="section-container">
+            <div class="footer-social">
+                <a href="#"><i data-feather="github"></i></a>
+                <a href="#"><i data-feather="linkedin"></i></a>
+                <a href="#"><i data-feather="twitter"></i></a>
+            </div>
             <p>&copy; 2025 Guilherme Peterlini. Todos os direitos reservados.</p>
         </div>
     </footer>
+
+    <script>
+        feather.replace();
+    </script>
 </body>
 </html>
