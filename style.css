@@ -5,14 +5,11 @@
     box-sizing: border-box;
 }
 
-/* Estilos gerais */
+/* Geral */
 body {
     font-family: 'Roboto', sans-serif;
-    line-height: 1.6;
+    background-color: #f4f6f8;
     color: #333;
-    background-color: #f0f2f5;
-    margin: 0;
-    padding: 0;
 }
 
 .container {
@@ -85,25 +82,25 @@ h1 {
     font-weight: bold;
 }
 
-/* Navigation */
-nav {
-    background: white;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    padding: 1rem;
+/* Header e Navegação */
+header {
+    background: #fff;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background-color: rgba(76, 175, 80, 0.8); /* Verde com 80% de opacidade */
+    color: white;
 }
 
 .nav-container {
-    max-width: 1280px;
-    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 20px;
 }
 
 .nav-logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #111827;
+    color: #007BFF;
 }
 
 .nav-links {
@@ -111,25 +108,27 @@ nav {
 }
 
 .nav-links a {
-    color: #4b5563;
+    margin: 0 10px;
     text-decoration: none;
-    margin-left: 2rem;
+    color: #333;
+    transition: color 0.2s;
 }
 
 .nav-links a:hover {
-    color: #111827;
+    color: #007BFF;
 }
 
 .mobile-menu-btn {
-    display: block;
     background: none;
     border: none;
+    display: none;
     cursor: pointer;
 }
 
 /* Hero Section */
 .hero {
-    background: white;
+    background: url('caminho/para/imagem.jpg') no-repeat center center/cover;
+    height: 300px;
     padding: 4rem 1rem;
     text-align: center;
 }
@@ -171,15 +170,24 @@ social-links i:hover {
 }
 
 .section-container {
-    max-width: 1280px;
+    max-width: 1200px;
     margin: 0 auto;
+    padding: 40px 20px;
 }
 
 .section-title {
+    text-align: center;
     font-size: 2rem;
-    font-weight: 800;
-    color: #111827;
-    margin-bottom: 1.5rem;
+    margin-bottom: 20px;
+    color: #007BFF;
+}
+
+.about p,
+.contact p {
+    max-width: 800px;
+    margin: 0 auto;
+    line-height: 1.6;
+    text-align: center;
 }
 
 /* Projects Section */
@@ -189,41 +197,44 @@ social-links i:hover {
 }
 
 .projects-grid {
-    display: grid;
-    gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
     margin-top: 3rem;
 }
 
 .project-card {
-    background: #f9fafb;
-    padding: 1.5rem;
-    border-radius: 0.5rem;
-    transition: box-shadow 0.3s;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    width: 300px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .project-card:hover {
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
 .project-title {
-    font-size: 1.25rem;
-    font-weight: bold;
-    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+    color: #007BFF;
+    margin-bottom: 10px;
 }
 
 .project-tags {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 15px;
 }
 
 .tag {
-    background: #e5e7eb;
-    color: #4b5563;
-    padding: 0.25rem 0.75rem;
-    border-radius: 9999px;
-    font-size: 0.875rem;
+    background: #007BFF;
+    color: #fff;
+    padding: 5px 10px;
+    border-radius: 50px;
+    margin-right: 5px;
+    font-size: 0.8rem;
 }
 
 /* Contact Section */
@@ -281,9 +292,10 @@ social-links i:hover {
 
 /* Footer */
 footer {
-    background: white;
-    padding: 3rem 1rem;
+    background: #fff;
     text-align: center;
+    padding: 20px;
+    border-top: 1px solid #eee;
 }
 
 .footer-social {
@@ -301,8 +313,10 @@ footer {
 /* Mobile menu */
 .mobile-menu {
     display: none;
-    padding: 1rem;
-    background: white;
+    flex-direction: column;
+    background: #fff;
+    text-align: center;
+    padding: 10px 0;
 }
 
 .mobile-menu.active {
@@ -310,10 +324,10 @@ footer {
 }
 
 .mobile-menu a {
-    display: block;
-    padding: 0.5rem;
-    color: #4b5563;
+    padding: 10px;
     text-decoration: none;
+    color: #333;
+    border-top: 1px solid #eee;
 }
 
 /* Media Queries */
@@ -422,4 +436,28 @@ footer {
     .link-card {
         padding: 15px;
     }
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none;
+    }
+    .mobile-menu-btn {
+        display: block;
+    }
+    .mobile-menu {
+        display: flex;
+    }
+    .projects-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+    .section-container {
+        padding: 20px;
+    }
+}
+
+button {
+    background-color: rgba(76, 175, 80, 0.8); /* Verde com 80% de opacidade */
+    color: white;
 }
