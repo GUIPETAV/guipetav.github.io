@@ -78,7 +78,7 @@ h1 {
 
 .activity-link {
     text-decoration: none;
-    color: #007bff;
+    color: #000000; /* Cor preta */
     font-weight: bold;
 }
 
@@ -87,7 +87,7 @@ header {
     background: #fff;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
     background-color: transparent; /* Fundo transparente */
-    color: white;
+    color: #000000; /* Cor preta */
 }
 
 .nav-container {
@@ -100,7 +100,7 @@ header {
 .nav-logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #007BFF;
+    color: #000000; /* Cor preta */
 }
 
 .nav-links {
@@ -110,12 +110,12 @@ header {
 .nav-links a {
     margin: 0 10px;
     text-decoration: none;
-    color: #333;
+    color: #000000; /* Cor preta */
     transition: color 0.2s;
 }
 
 .nav-links a:hover {
-    color: #007BFF;
+    color: #000000; /* Cor preta */
 }
 
 .mobile-menu-btn {
