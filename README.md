@@ -77,15 +77,15 @@ php -S localhost:8000
 ### Alterando Informações Pessoais
 
 1. **Nome e Título**: Edite o arquivo `index.html`
-   - Linha 16: Nome na navegação
-   - Linha 37: Nome no título principal
-   - Linha 38: Descrição/subtítulo
+   - Procure por `<span class="nav-logo">` para alterar o nome na navegação
+   - Procure pela tag `<h1>` na seção hero para alterar o nome principal
+   - Procure pela tag `<p>` após o h1 para alterar a descrição/subtítulo
 
-2. **Sobre Mim**: Edite o conteúdo da seção `#about` no `index.html` (linhas 50-58)
+2. **Sobre Mim**: Edite o conteúdo da seção com `id="about"` no `index.html`
 
-3. **Projetos**: Modifique os cards de projetos na seção `#projects` (linhas 61-95)
+3. **Projetos**: Modifique os cards de projetos na seção com `id="projects"`
 
-4. **Contato**: Atualize as informações de contato na seção `#contact` (linhas 98-106)
+4. **Contato**: Atualize as informações de contato na seção com `id="contact"`
 
 ### Adicionando Links de Salas de Aula
 
@@ -128,10 +128,21 @@ Edite o arquivo `style.css` para alterar:
 
 ### Atualizando Links de Redes Sociais
 
-No arquivo `script.js` (linhas 46-56), atualize as URLs:
+No arquivo `script.js`, procure pela seção "Add social media links functionality" e atualize as URLs:
 ```javascript
+// Exemplo para GitHub
 document.querySelector('[data-feather="github"]').parentElement.addEventListener('click', () => {
     window.open('https://github.com/SEU_USUARIO', '_blank');
+});
+
+// Exemplo para LinkedIn
+document.querySelector('[data-feather="linkedin"]').parentElement.addEventListener('click', () => {
+    window.open('https://linkedin.com/in/SEU_USUARIO', '_blank');
+});
+
+// Exemplo para Email
+document.querySelector('[data-feather="mail"]').parentElement.addEventListener('click', () => {
+    window.location.href = 'mailto:seu.email@example.com';
 });
 ```
 
