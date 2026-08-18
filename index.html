@@ -1,125 +1,156 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Guilherme Peterlini - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfólio de Guilherme Petav — designer e desenvolvedor." />
+  <meta name="author" content="Guilherme Petav" />
+  <title>Guilherme Petav — Portfólio</title>
+
+  <!-- Fonte externa — descomentar quando definida no Figma
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
+  -->
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/variables.css" />
+  <link rel="stylesheet" href="css/base.css" />
+  <link rel="stylesheet" href="css/layout.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/utilities.css" />
 </head>
 <body>
-    <!-- Header -->
-    <header class="animate__animated animate__fadeInDown">
-        <nav>
-            <div class="nav-container">
-                <span class="nav-logo">Guilherme Peterlini</span>
-                <div class="nav-links">
-                    <a href="#about">Sobre Mim</a>
-                    <a href="#projects">Projetos</a>
-                    <a href="#contact">Contato</a>
-                </div>
-                <button class="mobile-menu-btn" title="Open mobile menu">
-                    <i data-feather="menu"></i>
-                </button>
-            </div>
-            <div class="mobile-menu">
-                <a href="#about">Sobre Mim</a>
-                <a href="#projects">Projetos</a>
-                <a href="#contact">Contato</a>
-            </div>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero animate__animated animate__fadeIn">
-        <div class="hero-content">
-            <h1 class="animate__animated animate__fadeInUp">Guilherme Peterlini</h1>
-            <p class="animate__animated animate__fadeInUp animate__delay-1s">Desenvolvedor e Educador apaixonado por tecnologia.</p>
-            <div class="social-links animate__animated animate__fadeInUp animate__delay-2s">
-                <a href="#"><i data-feather="github"></i></a>
-                <a href="#"><i data-feather="linkedin"></i></a>
-                <a href="#"><i data-feather="twitter"></i></a>
-            </div>
+  <!-- ══════════════════════════════════════════════════════════
+       NAVEGAÇÃO PRINCIPAL
+       TODO (Figma): aplicar tipografia, cores e espaçamentos do protótipo
+  ══════════════════════════════════════════════════════════════ -->
+  <header class="nav" role="banner">
+    <div class="container nav__inner">
+      <a href="#inicio" class="nav__logo">GP</a>
+
+      <nav aria-label="Navegação principal">
+        <ul id="nav-list" class="nav__list" data-nav-list role="list">
+          <li><a href="#sobre" class="nav__link">Sobre</a></li>
+          <li><a href="#projetos" class="nav__link">Projetos</a></li>
+          <li><a href="#contato" class="nav__link">Contato</a></li>
+        </ul>
+      </nav>
+
+      <button
+        class="nav__toggle"
+        data-menu-toggle
+        aria-expanded="false"
+        aria-label="Abrir menu"
+        aria-controls="nav-list"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="inicio">
+
+    <!-- ══════════════════════════════════════════════════════════
+         HERO
+         TODO (Figma): inserir título, subtítulo e CTA do protótipo
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="hero" class="section section--lg" aria-labelledby="hero-title">
+      <div class="container">
+        <!-- Placeholder — substituir pelo conteúdo do Figma -->
+        <h1 id="hero-title">Olá, eu sou o Guilherme.</h1>
+        <p class="mt-4 text-muted">
+          Designer e desenvolvedor. Este site está em construção —
+          o redesign completo vem do Figma.
+        </p>
+        <div class="flex gap-4 mt-8">
+          <a href="#projetos" class="btn btn--primary">Ver projetos</a>
+          <a href="#contato" class="btn btn--outline">Entrar em contato</a>
         </div>
+      </div>
     </section>
 
-    <!-- Main Content -->
-    <main>
-        <!-- About Section -->
-        <section id="about" class="about animate__animated animate__fadeInUp">
-            <div class="section-container">
-                <h2 class="section-title">Sobre Mim</h2>
-                <p>
-                    Como educador apaixonado por tecnologia, dedico-me a formar a próxima geração de desenvolvedores e profissionais de TI.
-                    Com experiência tanto no ensino superior quanto na educação profissional, trabalho para construir pontes entre a teoria acadêmica e as demandas práticas do mercado de trabalho.
-                </p>
-            </div>
-        </section>
+    <!-- ══════════════════════════════════════════════════════════
+         SOBRE
+         TODO (Figma): inserir foto, bio e skills do protótipo
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="sobre" class="section" aria-labelledby="sobre-title">
+      <div class="container">
+        <h2 id="sobre-title">Sobre mim</h2>
+        <!-- Placeholder — substituir pelo conteúdo do Figma -->
+        <p class="mt-4">
+          Em breve — conteúdo será inserido após o protótipo no Figma ser aprovado.
+        </p>
+      </div>
+    </section>
 
-        <!-- Projects Section -->
-        <section id="projects" class="projects animate__animated animate__fadeInUp">
-            <div class="section-container">
-                <h2 class="section-title">Projetos</h2>
-                <div class="projects-grid">
-                    <div class="project-card animate__animated animate__zoomIn">
-                        <h3 class="project-title">Salas de aula</h3>
-                        <p>Acesse sua Disciplina</p>
-                        <a href="project-links.html" title="Salas de aula do github">
-                            <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2" alt="Salas de aula" class="project-image">
-                        </a>
-                        <div class="project-tags">
-                            <span class="tag">Github</span>
-                        </div>
-                    </div>
-                    <div class="project-card animate__animated animate__zoomIn animate__delay-1s">
-                        <h3 class="project-title">Project 2</h3>
-                        <p>Description of project 2 demonstrating problem-solving abilities.</p>
-                        <div class="project-tags">
-                            <span class="tag">Python</span>
-                            <span class="tag">Django</span>
-                            <span class="tag">PostgreSQL</span>
-                        </div>
-                    </div>
-                    <div class="project-card animate__animated animate__zoomIn animate__delay-2s">
-                        <h3 class="project-title">Project 3</h3>
-                        <p>Description of project 3 highlighting creative solutions.</p>
-                        <div class="project-tags">
-                            <span class="tag">TypeScript</span>
-                            <span class="tag">Next.js</span>
-                            <span class="tag">AWS</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Contact Section -->
-        <section id="contact" class="contact animate__animated animate__fadeInUp">
-            <div class="section-container">
-                <h2 class="section-title">Contato</h2>
-                <p>
-                    Entre em contato comigo através das redes sociais ou envie um e-mail para 
-                    <a href="mailto:guilherme@example.com">guilherme@example.com</a>.
-                </p>
-            </div>
-        </section>
-    </main>
-
-    <!-- Footer -->
-    <footer class="animate__animated animate__fadeInUp">
-        <div class="section-container">
-            <div class="footer-social">
-                <a href="#"><i data-feather="github"></i></a>
-                <a href="#"><i data-feather="linkedin"></i></a>
-                <a href="#"><i data-feather="twitter"></i></a>
-            </div>
-            <p>&copy; 2025 Guilherme Peterlini. Todos os direitos reservados.</p>
+    <!-- ══════════════════════════════════════════════════════════
+         PROJETOS
+         TODO (Figma): inserir cards de projetos do protótipo
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="projetos" class="section" aria-labelledby="projetos-title">
+      <div class="container">
+        <h2 id="projetos-title">Projetos</h2>
+        <!-- Placeholder — cards serão populados com dados reais -->
+        <div class="projects-grid mt-8">
+          <article class="card">
+            <div class="card__image" role="img" aria-label="Placeholder de imagem do projeto"></div>
+            <h3 class="card__title">Nome do projeto</h3>
+            <p class="card__description">Descrição breve do projeto.</p>
+          </article>
+          <article class="card">
+            <div class="card__image" role="img" aria-label="Placeholder de imagem do projeto"></div>
+            <h3 class="card__title">Nome do projeto</h3>
+            <p class="card__description">Descrição breve do projeto.</p>
+          </article>
+          <article class="card">
+            <div class="card__image" role="img" aria-label="Placeholder de imagem do projeto"></div>
+            <h3 class="card__title">Nome do projeto</h3>
+            <p class="card__description">Descrição breve do projeto.</p>
+          </article>
         </div>
-    </footer>
+      </div>
+    </section>
 
-    <script>
-        feather.replace();
-    </script>
+    <!-- ══════════════════════════════════════════════════════════
+         CONTATO
+         TODO (Figma): inserir formulário ou links de contato do protótipo
+    ══════════════════════════════════════════════════════════════ -->
+    <section id="contato" class="section" aria-labelledby="contato-title">
+      <div class="container text-center">
+        <h2 id="contato-title">Vamos conversar?</h2>
+        <p class="mt-4 text-muted">
+          Em breve — links de contato serão adicionados após o protótipo no Figma.
+        </p>
+        <a href="mailto:contato@exemplo.com" class="btn btn--primary mt-8">
+          Enviar e-mail
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════════
+       RODAPÉ
+       TODO (Figma): aplicar layout e links do protótipo
+  ══════════════════════════════════════════════════════════════ -->
+  <footer role="contentinfo">
+    <div class="container text-center" style="padding-block: var(--space-8);">
+      <p class="text-muted text-sm">
+        &copy; <span id="year"></span> Guilherme Petav. Feito com HTML, CSS e JS.
+      </p>
+    </div>
+  </footer>
+
+  <!-- JS — defer garante que não bloqueia a renderização -->
+  <script src="js/main.js" defer></script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
 </body>
 </html>

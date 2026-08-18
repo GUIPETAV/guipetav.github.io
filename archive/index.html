@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guilherme Peterlini - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.29.0/feather.min.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="animate__animated animate__fadeInDown">
+        <nav>
+            <div class="nav-container">
+                <span class="nav-logo">Guilherme Peterlini</span>
+                <div class="nav-links">
+                    <a href="#about">Sobre Mim</a>
+                    <a href="#projects">Projetos</a>
+                    <a href="#contact">Contato</a>
+                </div>
+                <button class="mobile-menu-btn" title="Open mobile menu">
+                    <i data-feather="menu"></i>
+                </button>
+            </div>
+            <div class="mobile-menu">
+                <a href="#about">Sobre Mim</a>
+                <a href="#projects">Projetos</a>
+                <a href="#contact">Contato</a>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero animate__animated animate__fadeIn">
+        <div class="hero-content">
+            <h1 class="animate__animated animate__fadeInUp">Guilherme Peterlini</h1>
+            <p class="animate__animated animate__fadeInUp animate__delay-1s">Desenvolvedor e Educador apaixonado por tecnologia.</p>
+            <div class="social-links animate__animated animate__fadeInUp animate__delay-2s">
+                <a href="#"><i data-feather="github"></i></a>
+                <a href="#"><i data-feather="linkedin"></i></a>
+                <a href="#"><i data-feather="twitter"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main>
+        <!-- About Section -->
+        <section id="about" class="about animate__animated animate__fadeInUp">
+            <div class="section-container">
+                <h2 class="section-title">Sobre Mim</h2>
+                <p>
+                    Como educador apaixonado por tecnologia, dedico-me a formar a próxima geração de desenvolvedores e profissionais de TI.
+                    Com experiência tanto no ensino superior quanto na educação profissional, trabalho para construir pontes entre a teoria acadêmica e as demandas práticas do mercado de trabalho.
+                </p>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects animate__animated animate__fadeInUp">
+            <div class="section-container">
+                <h2 class="section-title">Projetos</h2>
+                <div class="projects-grid">
+                    <div class="project-card animate__animated animate__zoomIn">
+                        <h3 class="project-title">Salas de aula</h3>
+                        <p>Acesse sua Disciplina</p>
+                        <a href="project-links.html" title="Salas de aula do github">
+                            <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2" alt="Salas de aula" class="project-image">
+                        </a>
+                        <div class="project-tags">
+                            <span class="tag">Github</span>
+                        </div>
+                    </div>
+                    <div class="project-card animate__animated animate__zoomIn animate__delay-1s">
+                        <h3 class="project-title">Project 2</h3>
+                        <p>Description of project 2 demonstrating problem-solving abilities.</p>
+                        <div class="project-tags">
+                            <span class="tag">Python</span>
+                            <span class="tag">Django</span>
+                            <span class="tag">PostgreSQL</span>
+                        </div>
+                    </div>
+                    <div class="project-card animate__animated animate__zoomIn animate__delay-2s">
+                        <h3 class="project-title">Project 3</h3>
+                        <p>Description of project 3 highlighting creative solutions.</p>
+                        <div class="project-tags">
+                            <span class="tag">TypeScript</span>
+                            <span class="tag">Next.js</span>
+                            <span class="tag">AWS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact animate__animated animate__fadeInUp">
+            <div class="section-container">
+                <h2 class="section-title">Contato</h2>
+                <p>
+                    Entre em contato comigo através das redes sociais ou envie um e-mail para 
+                    <a href="mailto:guilherme@example.com">guilherme@example.com</a>.
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="animate__animated animate__fadeInUp">
+        <div class="section-container">
+            <div class="footer-social">
+                <a href="#"><i data-feather="github"></i></a>
+                <a href="#"><i data-feather="linkedin"></i></a>
+                <a href="#"><i data-feather="twitter"></i></a>
+            </div>
+            <p>&copy; 2025 Guilherme Peterlini. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <script>
+        feather.replace();
+    </script>
+</body>
+</html>

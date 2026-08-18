@@ -1,0 +1,67 @@
+/* base.css — Estilos base globais */
+
+html {
+  scroll-behavior: smooth;
+  font-size: 100%;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  font-weight: var(--font-regular);
+  line-height: 1.7;
+}
+
+/* ── Headings ─────────────────────────────────────────────────── */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: var(--font-bold);
+  line-height: 1.2;
+  color: var(--color-text);
+}
+
+h1 { font-size: var(--text-4xl); }
+h2 { font-size: var(--text-3xl); }
+h3 { font-size: var(--text-2xl); }
+h4 { font-size: var(--text-xl); }
+
+/* ── Parágrafo ────────────────────────────────────────────────── */
+p {
+  max-width: 65ch;
+  color: var(--color-text);
+}
+
+p + p {
+  margin-top: var(--space-4);
+}
+
+/* ── Links ────────────────────────────────────────────────────── */
+a {
+  color: var(--color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-accent-hover);
+}
+
+/* ── Foco acessível ───────────────────────────────────────────── */
+:focus-visible {
+  outline: 2px solid var(--color-accent);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* ── Listas ───────────────────────────────────────────────────── */
+ul, ol {
+  padding-left: var(--space-6);
+}
+
+/* ── Código ───────────────────────────────────────────────────── */
+code, pre {
+  font-family: var(--font-mono);
+  font-size: var(--text-sm);
+}
