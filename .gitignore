@@ -1,18 +1,30 @@
-# Ignore Mac system files
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
 
-# Ignore Node.js dependencies
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Editores
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependências (uso futuro)
 node_modules/
-
-# Ignore build output
-dist/
-build/
-
-# Ignore logs and temporary files
+npm-debug.log*
+yarn-error.log*
 *.log
 *.tmp
 
-# Ignore by Visual Studio Code
-.vscode/
+# Build e cache
+dist/
+build/
+.cache/
+.parcel-cache/
 
 
