@@ -1,9 +1,11 @@
 /* layout.css — Classes de layout */
 
 /* ── Container ────────────────────────────────────────────────── */
+/* max-width 1184px = largura de conteúdo do frame desktop no Figma
+   (1440px de frame − 128px de margem de cada lado) */
 .container {
   width: 100%;
-  max-width: 1100px;
+  max-width: 1184px;
   margin-inline: auto;
   padding-inline: var(--space-6);
 }
@@ -14,7 +16,21 @@
 }
 
 .section--lg {
-  padding-block: var(--space-24);
+  padding-block: var(--space-16);
+}
+
+.section--subtle {
+  background-color: var(--color-bg-subtle);
+}
+
+@media (min-width: 768px) {
+  .section {
+    padding-block: var(--space-24);
+  }
+
+  .section--lg {
+    padding-block: var(--space-32);
+  }
 }
 
 /* ── Grid de projetos ─────────────────────────────────────────── */
@@ -49,4 +65,8 @@
 .flex--between {
   align-items: center;
   justify-content: space-between;
+}
+
+.flex--wrap {
+  flex-wrap: wrap;
 }

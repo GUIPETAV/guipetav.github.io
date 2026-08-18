@@ -3,15 +3,14 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfólio de Guilherme Petav — designer e desenvolvedor." />
-  <meta name="author" content="Guilherme Petav" />
-  <title>Guilherme Petav — Portfólio</title>
+  <meta name="description" content="Portfólio de Guilherme Peterlini — desenvolvedor fullstack e instrutor de Desenvolvimento de Sistemas." />
+  <meta name="author" content="Guilherme Peterlini" />
+  <title>Guilherme Peterlini — Portfólio</title>
 
-  <!-- Fonte externa — descomentar quando definida no Figma
+  <!-- Fonte externa — Inter (única família, conforme diretriz de performance do projeto) -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet" />
-  -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
 
   <!-- CSS -->
   <link rel="stylesheet" href="css/reset.css" />
@@ -23,13 +22,14 @@
 </head>
 <body>
 
+  <a href="#inicio" class="skip-link">Pular para o conteúdo</a>
+
   <!-- ══════════════════════════════════════════════════════════
        NAVEGAÇÃO PRINCIPAL
-       TODO (Figma): aplicar tipografia, cores e espaçamentos do protótipo
   ══════════════════════════════════════════════════════════════ -->
   <header class="nav" role="banner">
     <div class="container nav__inner">
-      <a href="#inicio" class="nav__logo">GP</a>
+      <a href="#inicio" class="nav__logo">Guilherme Peterlini</a>
 
       <nav aria-label="Navegação principal">
         <ul id="nav-list" class="nav__list" data-nav-list role="list">
@@ -57,77 +57,117 @@
 
     <!-- ══════════════════════════════════════════════════════════
          HERO
-         TODO (Figma): inserir título, subtítulo e CTA do protótipo
     ══════════════════════════════════════════════════════════════ -->
     <section id="hero" class="section section--lg" aria-labelledby="hero-title">
-      <div class="container">
-        <!-- Placeholder — substituir pelo conteúdo do Figma -->
-        <h1 id="hero-title">Olá, eu sou o Guilherme.</h1>
-        <p class="mt-4 text-muted">
-          Designer e desenvolvedor. Este site está em construção —
-          o redesign completo vem do Figma.
+      <div class="container text-center">
+        <span class="hero__eyebrow">Desenvolvedor fullstack · Instrutor de Sistemas</span>
+        <h1 id="hero-title">Guilherme Peterlini</h1>
+        <p class="hero__lead mt-4">
+          Desenvolvo aplicações web do zero ao deploy e formo novos profissionais de
+          tecnologia como instrutor de Desenvolvimento de Sistemas.
         </p>
-        <div class="flex gap-4 mt-8">
+        <div class="flex flex--center gap-4 mt-8">
           <a href="#projetos" class="btn btn--primary">Ver projetos</a>
-          <a href="#contato" class="btn btn--outline">Entrar em contato</a>
+          <a href="#contato" class="btn btn--outline">Falar comigo</a>
         </div>
       </div>
     </section>
 
     <!-- ══════════════════════════════════════════════════════════
          SOBRE
-         TODO (Figma): inserir foto, bio e skills do protótipo
     ══════════════════════════════════════════════════════════════ -->
-    <section id="sobre" class="section" aria-labelledby="sobre-title">
-      <div class="container">
+    <section id="sobre" class="section section--subtle" aria-labelledby="sobre-title">
+      <div class="container text-center">
         <h2 id="sobre-title">Sobre mim</h2>
-        <!-- Placeholder — substituir pelo conteúdo do Figma -->
-        <p class="mt-4">
-          Em breve — conteúdo será inserido após o protótipo no Figma ser aprovado.
+        <p class="mt-4" style="margin-inline: auto;">
+          Sou desenvolvedor fullstack e instrutor de Desenvolvimento de Sistemas, com
+          experiência no ensino técnico e profissionalizante. Gosto de unir teoria e
+          prática: construo aplicações reais enquanto ajudo a próxima geração de
+          desenvolvedores a dar os primeiros passos no mercado de TI.
         </p>
+        <ul class="tag-list flex--center mt-8" role="list" style="justify-content: center; max-width: 46rem; margin-inline: auto;">
+          <li><span class="tag">JavaScript</span></li>
+          <li><span class="tag">TypeScript</span></li>
+          <li><span class="tag">React</span></li>
+          <li><span class="tag">Node.js</span></li>
+          <li><span class="tag">Python</span></li>
+          <li><span class="tag">Django</span></li>
+          <li><span class="tag">PostgreSQL</span></li>
+        </ul>
       </div>
     </section>
 
     <!-- ══════════════════════════════════════════════════════════
          PROJETOS
-         TODO (Figma): inserir cards de projetos do protótipo
+         Cards ainda sem projeto real — usar .card__status ("Em breve"),
+         nunca href="#" como link falso. Ver /areas/redesign_portfolio.md.
     ══════════════════════════════════════════════════════════════ -->
     <section id="projetos" class="section" aria-labelledby="projetos-title">
-      <div class="container">
+      <div class="container text-center">
         <h2 id="projetos-title">Projetos</h2>
-        <!-- Placeholder — cards serão populados com dados reais -->
-        <div class="projects-grid mt-8">
+        <div class="projects-grid mt-8" style="text-align: left;">
+
           <article class="card">
-            <div class="card__image" role="img" aria-label="Placeholder de imagem do projeto"></div>
-            <h3 class="card__title">Nome do projeto</h3>
-            <p class="card__description">Descrição breve do projeto.</p>
+            <div class="card__image" role="img" aria-label="Imagem do projeto (em breve)">
+              <span class="card__image-label" aria-hidden="true">Imagem do projeto</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Nome do projeto</h3>
+              <p class="card__description">Descrição breve do problema que o projeto resolve e o papel do Guilherme nele.</p>
+              <ul class="tag-list" role="list">
+                <li><span class="tag">React</span></li>
+                <li><span class="tag">Node.js</span></li>
+              </ul>
+              <span class="card__status">Em breve</span>
+            </div>
           </article>
+
           <article class="card">
-            <div class="card__image" role="img" aria-label="Placeholder de imagem do projeto"></div>
-            <h3 class="card__title">Nome do projeto</h3>
-            <p class="card__description">Descrição breve do projeto.</p>
+            <div class="card__image" role="img" aria-label="Imagem do projeto (em breve)">
+              <span class="card__image-label" aria-hidden="true">Imagem do projeto</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Nome do projeto</h3>
+              <p class="card__description">Descrição breve do problema que o projeto resolve e o papel do Guilherme nele.</p>
+              <ul class="tag-list" role="list">
+                <li><span class="tag">Python</span></li>
+                <li><span class="tag">Django</span></li>
+              </ul>
+              <span class="card__status">Em breve</span>
+            </div>
           </article>
+
           <article class="card">
-            <div class="card__image" role="img" aria-label="Placeholder de imagem do projeto"></div>
-            <h3 class="card__title">Nome do projeto</h3>
-            <p class="card__description">Descrição breve do projeto.</p>
+            <div class="card__image" role="img" aria-label="Imagem do projeto (em breve)">
+              <span class="card__image-label" aria-hidden="true">Imagem do projeto</span>
+            </div>
+            <div class="card__body">
+              <h3 class="card__title">Nome do projeto</h3>
+              <p class="card__description">Descrição breve do problema que o projeto resolve e o papel do Guilherme nele.</p>
+              <ul class="tag-list" role="list">
+                <li><span class="tag">TypeScript</span></li>
+                <li><span class="tag">AWS</span></li>
+              </ul>
+              <span class="card__status">Em breve</span>
+            </div>
           </article>
+
         </div>
       </div>
     </section>
 
     <!-- ══════════════════════════════════════════════════════════
          CONTATO
-         TODO (Figma): inserir formulário ou links de contato do protótipo
     ══════════════════════════════════════════════════════════════ -->
-    <section id="contato" class="section" aria-labelledby="contato-title">
+    <section id="contato" class="section section--subtle" aria-labelledby="contato-title">
       <div class="container text-center">
-        <h2 id="contato-title">Vamos conversar?</h2>
-        <p class="mt-4 text-muted">
-          Em breve — links de contato serão adicionados após o protótipo no Figma.
+        <h2 id="contato-title">Vamos conversar</h2>
+        <p class="mt-4" style="margin-inline: auto;">
+          Aberto a projetos freelance, colaborações e conversas sobre desenvolvimento
+          e educação em tecnologia.
         </p>
-        <a href="mailto:contato@exemplo.com" class="btn btn--primary mt-8">
-          Enviar e-mail
+        <a href="mailto:guihenpet2@gmail.com" class="btn btn--primary mt-8">
+          guihenpet2@gmail.com
         </a>
       </div>
     </section>
@@ -136,13 +176,23 @@
 
   <!-- ══════════════════════════════════════════════════════════
        RODAPÉ
-       TODO (Figma): aplicar layout e links do protótipo
   ══════════════════════════════════════════════════════════════ -->
-  <footer role="contentinfo">
-    <div class="container text-center" style="padding-block: var(--space-8);">
+  <footer class="footer" role="contentinfo">
+    <div class="container footer__inner">
       <p class="text-muted text-sm">
-        &copy; <span id="year"></span> Guilherme Petav. Feito com HTML, CSS e JS.
+        &copy; <span id="year"></span> Guilherme Peterlini
       </p>
+      <div class="footer__links">
+        <a href="https://github.com/GUIPETAV" target="_blank" rel="noopener">
+          GitHub
+          <svg class="icon-external" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <polyline points="15 3 21 3 21 9" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            <line x1="10" y1="14" x2="21" y2="3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span class="sr-only">(abre em nova aba)</span>
+        </a>
+      </div>
     </div>
   </footer>
 
