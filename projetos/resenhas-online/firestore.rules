@@ -1,0 +1,48 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Troque pelo e-mail do organizador (o mesmo criado em Authentication)
+    function isAdmin() {
+      return request.auth != null && request.auth.token.email == 'SEU_EMAIL_AQUI';
+    }
+
+    function validoPart(n) {
+      return request.resource.data.keys().hasOnly(['n', 'nome'])
+        && request.resource.data.n is int
+        && request.resource.data.n >= 1 && request.resource.data.n <= 999
+        && string(request.resource.data.n) == n
+        && request.resource.data.nome is string
+        && request.resource.data.nome.size() >= 1 && request.resource.data.nome.size() <= 30;
+    }
+
+    // Nome + número: público para leitura; qualquer um cria (nunca altera)
+    match /participantes/{n} {
+      allow read: if true;
+      allow create: if validoPart(n);
+      allow update: if false;
+      allow delete: if isAdmin();
+    }
+
+    // Celulares: qualquer um grava, só o organizador lê
+    match /contatos/{n} {
+      allow create: if request.resource.data.keys().hasOnly(['n', 'nome', 'cel'])
+        && string(request.resource.data.n) == n
+        && request.resource.data.cel is string
+        && request.resource.data.cel.size() >= 10 && request.resource.data.cel.size() <= 11;
+      allow read, delete: if isAdmin();
+      allow update: if false;
+    }
+
+    // Sorteio ao vivo: todos veem, só o organizador escreve
+    match /sorteio/{d} {
+      allow read: if true;
+      allow write: if isAdmin();
+    }
+
+    // Pares do amigo secreto: só o organizador
+    match /pares/{d} {
+      allow read, write: if isAdmin();
+    }
+  }
+}

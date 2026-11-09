@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resenha's — Amigo Havaiano</title>
+<style>
+:root{--sea:#0fb5ae;--deep:#0a6e8a;--sun:#ffb03b;--coral:#ff5e6c;--hib:#ff3d81;--sand:#fff6df;--ink:#0b3b4a}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Trebuchet MS",system-ui,sans-serif;color:var(--ink);
+background:linear-gradient(180deg,#ffd37a 0%,#ff9a6b 22%,#35c6c0 48%,#0a6e8a 100%);background-attachment:fixed;min-height:100vh}
+header{text-align:center;padding:34px 16px 10px}
+h1{margin:0;font-size:clamp(2.2rem,7vw,4rem);color:#fff;text-shadow:3px 3px 0 var(--coral),6px 6px 0 rgba(0,0,0,.15)}
+header p{color:#fff;font-weight:bold;text-shadow:1px 1px 3px rgba(0,0,0,.3);margin:.4rem 0 0}
+.wave{font-size:2rem;animation:sway 3s ease-in-out infinite;display:inline-block}
+@keyframes sway{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+main{max-width:960px;margin:18px auto 60px;padding:0 14px;display:grid;gap:18px}
+.card{background:var(--sand);border-radius:22px;padding:20px;box-shadow:0 8px 0 rgba(10,60,80,.25);border:3px solid #fff}
+h2{margin:0 0 12px;color:var(--deep)}
+form{display:grid;grid-template-columns:1.5fr 1.2fr .8fr auto;gap:10px}
+@media(max-width:720px){form{grid-template-columns:1fr}}
+input{padding:12px;border-radius:14px;border:2px solid var(--sea);font-size:1rem;background:#fff;width:100%}
+button{cursor:pointer;border:0;border-radius:14px;padding:12px 18px;font-weight:bold;font-size:1rem;color:#fff;background:var(--hib);box-shadow:0 4px 0 #b21d58;transition:.1s}
+button:active{transform:translateY(3px);box-shadow:0 1px 0 #b21d58}
+button:disabled{opacity:.6;cursor:wait}
+button.alt{background:var(--sea);box-shadow:0 4px 0 #087a76}
+button.sun{background:var(--sun);color:#5a3200;box-shadow:0 4px 0 #c27d12}
+button.ghost{background:#ccc;color:#333;box-shadow:0 4px 0 #999}
+.msg{min-height:1.3em;margin-top:8px;font-weight:bold}
+.msg.err{color:var(--coral)}.msg.ok{color:#1e8f5a}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:#fff;border:2px solid var(--sea);border-radius:999px;padding:6px 12px;display:flex;align-items:center;gap:8px}
+.chip b{background:var(--sun);border-radius:999px;padding:2px 9px}
+.chip button{padding:0 6px;background:none;color:var(--coral);box-shadow:none;font-size:1.1rem}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;align-items:center}
+.stage{margin-top:16px;min-height:150px;border-radius:18px;background:radial-gradient(circle,#fff 0%,#ffe9b3 100%);display:grid;place-items:center;text-align:center;padding:16px;border:3px dashed var(--sun)}
+.big{font-size:clamp(3rem,14vw,6rem);font-weight:900;color:var(--hib);line-height:1}
+.name{font-size:clamp(1.6rem,6vw,2.6rem);font-weight:900;color:var(--deep)}
+.pop{animation:pop .6s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{from{transform:scale(.2) rotate(-20deg);opacity:0}to{transform:none;opacity:1}}
+.hint{font-size:.9rem;opacity:.75}
+table{width:100%;border-collapse:collapse;margin-top:10px}
+td,th{padding:6px 8px;border-bottom:1px solid #e8d9b0;text-align:left}
+footer{text-align:center;color:#fff;padding-bottom:30px;font-size:.9rem}
+.fall{position:fixed;top:-40px;font-size:1.6rem;pointer-events:none;animation:fall linear forwards;z-index:9}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+a.lnk{color:#fff;cursor:pointer;text-decoration:underline}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<header>
+  <div><span class="wave">🌺</span> <span class="wave">🌴</span> <span class="wave">🍍</span></div>
+  <h1>Resenha's</h1>
+  <p>Amigo Havaiano — cadastre nome, celular e o seu número da sorte!</p>
+</header>
+
+<main>
+  <div class="card" id="aviso" hidden>
+    <h2>⚙️ Configuração pendente</h2>
+    <p>Edite o objeto <code>firebaseConfig</code> no código deste arquivo com os dados do seu projeto Firebase.</p>
+  </div>
+
+  <section class="card">
+    <h2>🌺 Cadastro</h2>
+    <form id="f">
+      <input id="nome" placeholder="Seu nome" maxlength="30" required autocomplete="name">
+      <input id="cel" type="tel" placeholder="Celular com DDD" maxlength="16" required autocomplete="tel">
+      <input id="num" type="number" min="1" max="999" placeholder="Seu número" required>
+      <button id="btnCad">Entrar na resenha</button>
+    </form>
+    <div class="msg" id="msg"></div>
+    <p class="hint">🔒 Seu celular fica guardado só para o organizador. Só o nome e o número aparecem para a turma.</p>
+    <h2 style="margin-top:14px">👥 Participantes (<span id="cnt">0</span>)</h2>
+    <div class="chips" id="lista"></div>
+  </section>
+
+  <section class="card">
+    <h2>🎲 Sorteio ao vivo</h2>
+    <div class="stage" id="stage"><span class="hint">Aguardando o organizador sortear…</span></div>
+    <div id="saiuBox" class="hint" style="margin-top:8px"></div>
+  </section>
+
+  <section class="card" id="adm" hidden>
+    <h2>🛠️ Painel do organizador</h2>
+    <div class="actions">
+      <button class="sun" id="sortear">🌊 Sortear número</button>
+      <button class="alt" id="zerar">Reiniciar sorteio</button>
+      <button class="ghost" id="sair">Sair</button>
+    </div>
+    <h2 style="margin-top:18px">🤙 Amigo Havaiano</h2>
+    <div class="actions">
+      <button class="sun" id="gerar">🌀 Gerar pares</button>
+      <input id="meunum" type="number" placeholder="Número da pessoa" style="max-width:200px">
+      <button class="alt" id="ver">Ver amigo dela</button>
+    </div>
+    <div class="stage" id="stage2"><span class="hint">Gere os pares e consulte por número (mostra por 6s).</span></div>
+    <h2 style="margin-top:18px">📞 Contatos</h2>
+    <table><thead><tr><th>Nº</th><th>Nome</th><th>Celular</th><th></th></tr></thead><tbody id="tb"></tbody></table>
+    <div class="msg" id="admmsg"></div>
+  </section>
+</main>
+
+<footer>Feito com aloha 🤙 • <a class="lnk" id="loginLnk">Área do organizador</a></footer>
+
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getFirestore,collection,doc,getDoc,setDoc,deleteDoc,onSnapshot,writeBatch,getDocs} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore.js";
+import {getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+
+// ====== COLE AQUI A CONFIGURAÇÃO DO SEU PROJETO FIREBASE ======
+const firebaseConfig = {
+  apiKey: "COLE_AQUI",
+  authDomain: "COLE_AQUI",
+  projectId: "COLE_AQUI",
+  appId: "COLE_AQUI"
+};
+// ===============================================================
+
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const say=(el,t,cls)=>{el.textContent=t;el.className="msg "+(cls||"")};
+
+if(firebaseConfig.apiKey==="COLE_AQUI"){ $("aviso").hidden=false; $("btnCad").disabled=true; throw new Error("Firebase não configurado"); }
+
+const app=initializeApp(firebaseConfig), db=getFirestore(app), auth=getAuth(app);
+let P=[], estado={saiu:[],seq:0}, isAdmin=false, first=true, lastSeq=null;
+
+function confete(){
+  const e=["🌺","🌴","🍍","🥥","🌊","🤙","🌸"];
+  for(let i=0;i<30;i++){const d=document.createElement("div");d.className="fall";
+    d.textContent=e[Math.random()*e.length|0];d.style.left=Math.random()*100+"vw";
+    d.style.animationDuration=(2+Math.random()*2.5)+"s";document.body.appendChild(d);setTimeout(()=>d.remove(),5000)}
+}
+
+// ---------- Participantes (público) ----------
+onSnapshot(collection(db,"participantes"),snap=>{
+  P=snap.docs.map(d=>d.data()).sort((a,b)=>a.n-b.n);
+  $("cnt").textContent=P.length;
+  $("lista").innerHTML=P.map(p=>`<div class="chip"><b>${p.n}</b>${esc(p.nome)}${isAdmin?`<button title="Remover" data-n="${p.n}">×</button>`:""}</div>`).join("")||'<span class="hint">Ninguém cadastrado ainda…</span>';
+});
+$("lista").onclick=async e=>{
+  const n=e.target.dataset?.n; if(!n||!isAdmin)return;
+  if(!confirm("Remover o participante "+n+"?"))return;
+  const b=writeBatch(db);b.delete(doc(db,"participantes",n));b.delete(doc(db,"contatos",n));await b.commit();
+};
+
+// ---------- Cadastro ----------
+$("f").onsubmit=async e=>{
+  e.preventDefault();
+  const nome=$("nome").value.trim(), cel=$("cel").value.replace(/\D/g,""), n=parseInt($("num").value,10);
+  if(!nome||nome.length>30) return say($("msg"),"Informe um nome (até 30 letras).","err");
+  if(cel.length<10||cel.length>11) return say($("msg"),"Celular inválido. Use DDD + número.","err");
+  if(!(n>=1&&n<=999)) return say($("msg"),"Escolha um número de 1 a 999.","err");
+  $("btnCad").disabled=true;
+  try{
+    if((await getDoc(doc(db,"participantes",String(n)))).exists()){say($("msg"),`O número ${n} já foi escolhido. Pegue outro!`,"err");return}
+    const b=writeBatch(db);
+    b.set(doc(db,"participantes",String(n)),{n,nome});
+    b.set(doc(db,"contatos",String(n)),{n,nome,cel});
+    await b.commit();
+    say($("msg"),`Aloha, ${nome}! Você entrou com o número ${n} 🌺`,"ok");$("f").reset();
+  }catch(err){say($("msg"),"Não foi possível cadastrar (o número pode ter sido escolhido agora). Tente outro.","err")}
+  finally{$("btnCad").disabled=false}
+};
+
+// ---------- Sorteio ao vivo (todos veem) ----------
+onSnapshot(doc(db,"sorteio","estado"),snap=>{
+  estado=snap.exists()?snap.data():{saiu:[],seq:0};
+  $("saiuBox").textContent=estado.saiu?.length?"Já sorteados: "+estado.saiu.join(", "):"";
+  if(lastSeq===null){lastSeq=estado.seq;
+    if(estado.nome)$("stage").innerHTML=`<div><div class="big">${estado.n}</div><div class="name">${esc(estado.nome)}</div></div>`;
+    return}
+  if(estado.seq===lastSeq)return;
+  const antiga=lastSeq;lastSeq=estado.seq;
+  if(!estado.nome){$("stage").innerHTML='<span class="hint">Sorteio reiniciado.</span>';return}
+  let t=0;const iv=setInterval(()=>{
+    const r=P.length?P[Math.random()*P.length|0].n:"?";
+    $("stage").innerHTML=`<div class="big">${r}</div>`;
+    if(++t>16){clearInterval(iv);
+      $("stage").innerHTML=`<div class="pop"><div class="big">${estado.n}</div><div class="name">${esc(estado.nome)}</div></div>`;confete()}
+  },90);
+});
+
+// ---------- Login do organizador ----------
+$("loginLnk").onclick=async()=>{
+  const email=prompt("E-mail do organizador:");if(!email)return;
+  const senha=prompt("Senha:");if(!senha)return;
+  try{await signInWithEmailAndPassword(auth,email,senha)}catch{alert("Login inválido.")}
+};
+$("sair").onclick=()=>signOut(auth);
+let unsubContatos=null;
+onAuthStateChanged(auth,user=>{
+  isAdmin=!!user; $("adm").hidden=!isAdmin;
+  document.querySelectorAll("#lista .chip").forEach(()=>{});
+  if(unsubContatos){unsubContatos();unsubContatos=null}
+  if(isAdmin){
+    unsubContatos=onSnapshot(collection(db,"contatos"),snap=>{
+      const rows=snap.docs.map(d=>d.data()).sort((a,b)=>a.n-b.n);
+      $("tb").innerHTML=rows.map(r=>`<tr><td>${r.n}</td><td>${esc(r.nome)}</td><td>${esc(r.cel)}</td><td></td></tr>`).join("");
+    },()=>say($("admmsg"),"Sem permissão para ler contatos. Confira o e-mail nas regras.","err"));
+  }
+  // re-renderiza lista para mostrar/ocultar o ×
+  onSnapshotRefresh();
+});
+function onSnapshotRefresh(){
+  $("lista").innerHTML=P.map(p=>`<div class="chip"><b>${p.n}</b>${esc(p.nome)}${isAdmin?`<button title="Remover" data-n="${p.n}">×</button>`:""}</div>`).join("")||'<span class="hint">Ninguém cadastrado ainda…</span>';
+}
+
+// ---------- Ações do organizador ----------
+$("sortear").onclick=async()=>{
+  const saiu=estado.saiu||[], rest=P.filter(p=>!saiu.includes(p.n));
+  if(!rest.length)return say($("admmsg"),"Não há mais ninguém para sortear.","err");
+  const w=rest[Math.random()*rest.length|0];
+  await setDoc(doc(db,"sorteio","estado"),{n:w.n,nome:w.nome,saiu:[...saiu,w.n],seq:(estado.seq||0)+1});
+  say($("admmsg"),"","");
+};
+$("zerar").onclick=async()=>{
+  if(!confirm("Reiniciar o sorteio?"))return;
+  await setDoc(doc(db,"sorteio","estado"),{saiu:[],seq:(estado.seq||0)+1});
+};
+$("gerar").onclick=async()=>{
+  if(P.length<3)return say($("admmsg"),"São necessárias pelo menos 3 pessoas.","err");
+  if(!confirm("Gerar pares agora? Quem se cadastrar depois ficará de fora."))return;
+  const ns=P.map(p=>p.n);let m=null;
+  for(let k=0;k<500&&!m;k++){
+    const a=[...ns];for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}
+    if(a.every((v,i)=>v!==ns[i])){m={};ns.forEach((n,i)=>m[n]=a[i])}
+  }
+  await setDoc(doc(db,"pares","estado"),{m});
+  $("stage2").innerHTML='<div class="name pop">Pares gerados! 🌴</div>';confete();
+};
+$("ver").onclick=async()=>{
+  const n=parseInt($("meunum").value,10);
+  const s=await getDoc(doc(db,"pares","estado"));
+  if(!s.exists())return $("stage2").innerHTML='<span class="hint">Os pares ainda não foram gerados.</span>';
+  const eu=P.find(p=>p.n===n), alvo=P.find(p=>p.n===s.data().m[n]);
+  if(!eu||!alvo)return $("stage2").innerHTML='<span class="hint">Número não encontrado nos pares.</span>';
+  $("stage2").innerHTML=`<div class="pop"><div class="hint">${esc(eu.nome)}, seu amigo havaiano é…</div><div class="name">🌺 ${esc(alvo.nome)} 🌺</div></div>`;
+  $("meunum").value="";
+  setTimeout(()=>{$("stage2").innerHTML='<span class="hint">Resultado escondido. Próximo!</span>'},6000);
+};
+</script>
+</body>
+</html>
