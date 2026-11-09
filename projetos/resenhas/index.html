@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Resenha's — Amigo Havaiano</title>
+<style>
+:root{--sea:#0fb5ae;--deep:#0a6e8a;--sun:#ffb03b;--coral:#ff5e6c;--hib:#ff3d81;--sand:#fff6df;--leaf:#1e8f5a;--ink:#0b3b4a}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Trebuchet MS",system-ui,sans-serif;color:var(--ink);
+background:linear-gradient(180deg,#ffd37a 0%,#ff9a6b 22%,#35c6c0 48%,#0a6e8a 100%);background-attachment:fixed;min-height:100vh}
+header{text-align:center;padding:34px 16px 10px;position:relative}
+h1{margin:0;font-size:clamp(2.2rem,7vw,4rem);color:#fff;text-shadow:3px 3px 0 var(--coral),6px 6px 0 rgba(0,0,0,.15);letter-spacing:1px}
+header p{color:#fff;font-weight:bold;text-shadow:1px 1px 3px rgba(0,0,0,.3);margin:.4rem 0 0}
+.wave{font-size:2rem;animation:sway 3s ease-in-out infinite;display:inline-block}
+@keyframes sway{0%,100%{transform:rotate(-8deg)}50%{transform:rotate(8deg)}}
+main{max-width:960px;margin:18px auto 60px;padding:0 14px;display:grid;gap:18px}
+.card{background:var(--sand);border-radius:22px;padding:20px;box-shadow:0 8px 0 rgba(10,60,80,.25);border:3px solid #fff}
+h2{margin:0 0 12px;color:var(--deep)}
+form{display:grid;grid-template-columns:2fr 1fr auto;gap:10px}
+@media(max-width:620px){form{grid-template-columns:1fr}}
+input{padding:12px;border-radius:14px;border:2px solid var(--sea);font-size:1rem;background:#fff;width:100%}
+button{cursor:pointer;border:0;border-radius:14px;padding:12px 18px;font-weight:bold;font-size:1rem;color:#fff;background:var(--hib);box-shadow:0 4px 0 #b21d58;transition:.1s}
+button:active{transform:translateY(3px);box-shadow:0 1px 0 #b21d58}
+button.alt{background:var(--sea);box-shadow:0 4px 0 #087a76}
+button.sun{background:var(--sun);color:#5a3200;box-shadow:0 4px 0 #c27d12}
+button.ghost{background:#ccc;color:#333;box-shadow:0 4px 0 #999}
+.msg{min-height:1.3em;margin-top:8px;font-weight:bold;color:var(--coral)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{background:#fff;border:2px solid var(--sea);border-radius:999px;padding:6px 8px 6px 12px;display:flex;align-items:center;gap:8px}
+.chip b{background:var(--sun);border-radius:999px;padding:2px 9px}
+.chip button{padding:0 8px;background:none;color:var(--coral);box-shadow:none;font-size:1.1rem}
+.actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px}
+.stage{margin-top:16px;min-height:150px;border-radius:18px;background:radial-gradient(circle,#fff 0%,#ffe9b3 100%);display:grid;place-items:center;text-align:center;padding:16px;border:3px dashed var(--sun)}
+.big{font-size:clamp(3rem,14vw,6rem);font-weight:900;color:var(--hib);line-height:1}
+.name{font-size:clamp(1.6rem,6vw,2.6rem);font-weight:900;color:var(--deep)}
+.pop{animation:pop .6s cubic-bezier(.2,1.6,.4,1)}
+@keyframes pop{from{transform:scale(.2) rotate(-20deg);opacity:0}to{transform:none;opacity:1}}
+.hist{margin:10px 0 0;padding-left:20px}
+.hint{font-size:.9rem;opacity:.75}
+footer{text-align:center;color:#fff;padding-bottom:30px;font-size:.9rem}
+.tabs{display:flex;gap:8px;margin-bottom:12px}
+.tab{flex:1}
+.tab.off{background:#ddd;color:#555;box-shadow:0 4px 0 #aaa}
+.fall{position:fixed;top:-40px;font-size:1.6rem;pointer-events:none;animation:fall linear forwards;z-index:9}
+@keyframes fall{to{transform:translateY(110vh) rotate(360deg)}}
+</style>
+</head>
+<body>
+<header>
+  <div><span class="wave">🌺</span> <span class="wave">🌴</span> <span class="wave">🍍</span></div>
+  <h1>Resenha's</h1>
+  <p>Amigo Havaiano — cadastre seu nome, escolha seu número e deixe o aloha decidir!</p>
+</header>
+
+<main>
+  <section class="card">
+    <h2>🌺 1. Cadastro</h2>
+    <form id="f">
+      <input id="nome" placeholder="Seu nome" maxlength="30" required>
+      <input id="num" type="number" min="1" max="999" placeholder="Seu número" required>
+      <button>Entrar na resenha</button>
+    </form>
+    <div class="msg" id="msg"></div>
+    <h2 style="margin-top:14px">👥 Participantes (<span id="cnt">0</span>)</h2>
+    <div class="chips" id="lista"></div>
+    <div class="actions"><button class="ghost" id="limpar">Limpar tudo</button></div>
+  </section>
+
+  <section class="card">
+    <h2>🎲 2. Sorteio</h2>
+    <div class="tabs">
+      <button class="tab" id="t1">Sorteio por número</button>
+      <button class="tab off" id="t2">Amigo Havaiano</button>
+    </div>
+
+    <div id="modo1">
+      <p class="hint">Sorteia um número entre os cadastrados e revela quem é. Cada pessoa só sai uma vez.</p>
+      <div class="actions">
+        <button class="sun" id="sortear">🌊 Sortear!</button>
+        <button class="alt" id="zerar">Reiniciar sorteio</button>
+      </div>
+      <div class="stage" id="stage"><span class="hint">Aguardando o sorteio…</span></div>
+      <ol class="hist" id="hist"></ol>
+    </div>
+
+    <div id="modo2" hidden>
+      <p class="hint">Cada pessoa tira um amigo (ninguém tira a si mesmo). Depois do sorteio, cada um digita o <b>próprio número</b> para ver quem tirou — em segredo!</p>
+      <div class="actions"><button class="sun" id="gerar">🌀 Gerar amigos</button></div>
+      <div class="actions" style="margin-top:14px">
+        <input id="meunum" type="number" placeholder="Digite seu número" style="max-width:220px">
+        <button id="ver" class="alt">Ver meu amigo</button>
+      </div>
+      <div class="stage" id="stage2"><span class="hint">Gere os pares e depois consulte seu número.</span></div>
+    </div>
+  </section>
+</main>
+<footer>Feito com aloha 🤙 • Os dados ficam salvos neste navegador</footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const KEY="resenhas_v1";
+let S=JSON.parse(localStorage.getItem(KEY)||'{"p":[],"saiu":[],"pares":null}');
+const save=()=>localStorage.setItem(KEY,JSON.stringify(S));
+const esc=s=>s.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+function confete(){
+  const e=["🌺","🌴","🍍","🥥","🌊","🤙","🌸"];
+  for(let i=0;i<30;i++){
+    const d=document.createElement("div");d.className="fall";
+    d.textContent=e[Math.random()*e.length|0];
+    d.style.left=Math.random()*100+"vw";
+    d.style.animationDuration=(2+Math.random()*2.5)+"s";
+    document.body.appendChild(d);setTimeout(()=>d.remove(),5000);
+  }
+}
+function render(){
+  $("cnt").textContent=S.p.length;
+  $("lista").innerHTML=S.p.map(p=>`<div class="chip"><b>${p.n}</b>${esc(p.nome)}<button title="Remover" onclick="rem(${p.n})">×</button></div>`).join("")||'<span class="hint">Ninguém cadastrado ainda…</span>';
+  $("hist").innerHTML=S.saiu.map(n=>{const p=S.p.find(x=>x.n===n);return p?`<li>#${p.n} — ${esc(p.nome)}</li>`:""}).join("");
+}
+window.rem=n=>{S.p=S.p.filter(p=>p.n!==n);S.saiu=S.saiu.filter(x=>x!==n);S.pares=null;save();render()};
+
+$("f").onsubmit=e=>{
+  e.preventDefault();
+  const nome=$("nome").value.trim(),n=parseInt($("num").value,10);
+  if(!nome||!n||n<1){$("msg").textContent="Preencha nome e um número válido.";return}
+  if(S.p.some(p=>p.n===n)){$("msg").textContent=`O número ${n} já foi escolhido. Pegue outro!`;return}
+  if(S.p.some(p=>p.nome.toLowerCase()===nome.toLowerCase())){$("msg").textContent="Esse nome já está cadastrado.";return}
+  S.p.push({nome,n});S.pares=null;save();render();
+  $("msg").textContent="";$("f").reset();$("nome").focus();
+};
+$("limpar").onclick=()=>{if(confirm("Apagar todos os participantes e sorteios?")){S={p:[],saiu:[],pares:null};save();render();$("stage").innerHTML='<span class="hint">Aguardando o sorteio…</span>'}};
+
+// Modo 1
+$("sortear").onclick=()=>{
+  const rest=S.p.filter(p=>!S.saiu.includes(p.n));
+  if(!S.p.length){$("stage").innerHTML='<span class="hint">Cadastre alguém primeiro.</span>';return}
+  if(!rest.length){$("stage").innerHTML='<span class="name">Todo mundo já saiu! 🌺</span>';return}
+  let t=0;const iv=setInterval(()=>{
+    const r=S.p[Math.random()*S.p.length|0];
+    $("stage").innerHTML=`<div class="big">${r.n}</div>`;
+    if(++t>18){clearInterval(iv);
+      const w=rest[Math.random()*rest.length|0];
+      S.saiu.push(w.n);save();render();
+      $("stage").innerHTML=`<div class="pop"><div class="big">${w.n}</div><div class="name">${esc(w.nome)}</div></div>`;
+      confete();
+    }
+  },90);
+};
+$("zerar").onclick=()=>{S.saiu=[];save();render();$("stage").innerHTML='<span class="hint">Sorteio reiniciado.</span>'};
+
+// Modo 2: derangement
+function gerar(){
+  const ns=S.p.map(p=>p.n);
+  for(let k=0;k<500;k++){
+    const a=[...ns];
+    for(let i=a.length-1;i>0;i--){const j=Math.random()*(i+1)|0;[a[i],a[j]]=[a[j],a[i]]}
+    if(a.every((v,i)=>v!==ns[i])){const m={};ns.forEach((n,i)=>m[n]=a[i]);return m}
+  }
+  return null;
+}
+$("gerar").onclick=()=>{
+  if(S.p.length<3){$("stage2").innerHTML='<span class="hint">São necessárias pelo menos 3 pessoas.</span>';return}
+  if(S.pares&&!confirm("Já existem pares gerados. Gerar de novo?"))return;
+  S.pares=gerar();save();
+  $("stage2").innerHTML='<div class="name pop">Pares gerados! 🌴<br><span class="hint">Cada um digita seu número para ver.</span></div>';
+  confete();
+};
+$("ver").onclick=()=>{
+  const n=parseInt($("meunum").value,10);
+  if(!S.pares){$("stage2").innerHTML='<span class="hint">Os pares ainda não foram gerados.</span>';return}
+  const eu=S.p.find(p=>p.n===n);
+  if(!eu){$("stage2").innerHTML='<span class="hint">Número não encontrado.</span>';return}
+  const am=S.p.find(p=>p.n===S.pares[n]);
+  $("stage2").innerHTML=`<div class="pop"><div class="hint">${esc(eu.nome)}, seu amigo havaiano é…</div><div class="name">🌺 ${esc(am.nome)} 🌺</div></div>`;
+  $("meunum").value="";
+  setTimeout(()=>{$("stage2").innerHTML='<span class="hint">Resultado escondido. Próximo!</span>'},6000);
+};
+
+$("t1").onclick=()=>{$("modo1").hidden=false;$("modo2").hidden=true;$("t1").classList.remove("off");$("t2").classList.add("off")};
+$("t2").onclick=()=>{$("modo1").hidden=true;$("modo2").hidden=false;$("t2").classList.remove("off");$("t1").classList.add("off")};
+render();
+</script>
+</body>
+</html>
